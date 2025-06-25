@@ -4,13 +4,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class ConfProperties {
+public class TestDataProperties {
     protected static FileInputStream fileInputStream;
     protected static Properties PROPERTIES;
     static {
         try {
             // указание пути до файла с настройками
-            fileInputStream = new FileInputStream("src/test/resources/conf.properties");
+            fileInputStream = new FileInputStream("src/test/resources/testData.properties");
             PROPERTIES = new Properties();
             PROPERTIES.load(fileInputStream);
         } catch (IOException e){
@@ -31,3 +31,4 @@ public class ConfProperties {
         return PROPERTIES.getProperty(key);
     }
 }
+

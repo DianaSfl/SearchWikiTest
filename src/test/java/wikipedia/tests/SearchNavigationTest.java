@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import wikipedia.pages.MainPage;
 import wikipedia.pages.SearchNonFound;
 import wikipedia.pages.SearchQueryPage;
-import wikipedia.utils.ConfProperties;
+import wikipedia.utils.TestDataProperties;
 
 @DisplayName("Проверка корректной реакции поиска на запросы в Википедии")
 public class SearchNavigationTest extends BaseTest{
@@ -23,7 +23,7 @@ public class SearchNavigationTest extends BaseTest{
     @Description(value = "Тест проверяет, что при выполнении поиска (нажатие лупы) по существующему запросу появляется статья")
     public void ValidSearchQueryOpenArticleTest() {
         mainPage = new MainPage(driver);
-        String searchQuery = ConfProperties.getProperty("existSearchQuery");
+        String searchQuery = TestDataProperties.getProperty("existSearchQuery");
 
         mainPage.enterSearchQuery(searchQuery);
         String expectedTitle = mainPage.textFirstSuggestion();
@@ -40,7 +40,7 @@ public class SearchNavigationTest extends BaseTest{
     @Description(value = "Тест проверяет, что при выполнении поиска (нажатие лупы) по несуществующему запросу открывается страница поиска")
     public void InvalidSearchOpenNonFoundPageTest() {
         mainPage = new MainPage(driver);
-        String searchQuery = ConfProperties.getProperty("noExistSearchQuery");
+        String searchQuery = TestDataProperties.getProperty("noExistSearchQuery");
 
         mainPage.enterSearchQuery(searchQuery);
         mainPage.clickSearchBtn();
